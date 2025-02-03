@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Table</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+    <div class="bg-white rounded-lg shadow-lg p-6">
+        <!-- Header -->
+        <div class="flex justify-between items-center ">
+            <h1 class="text-2xl font-bold">Total Users <span class="text-blue-600">(1200)</span></h1>
+            
+            <!-- Search Bar -->
+            <div class="relative">
+                <input type="text" placeholder="Search" class="border border-gray-300 rounded-md px-4 py-2 w-[600px]">
+                <button class="absolute right-0 top-0 bottom-0 bg-blue-600 text-white px-4 rounded-r-md w-48">Search</button>
+            </div>
+        </div>
+
+        <p class="text-gray-600 mb-7">Table Representation</p>
+
+        <!-- Filter Buttons -->
+        <div class="flex gap-2 mb-4">
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-md flex items-center gap-2">
+                Default
+                <i class="h-4 w-4">🔽</i>
+            </button>
+            <button class="bg-gray-200 text-black px-4 py-2 rounded-md flex items-center gap-2">
+                Verified Users
+                <i class="h-4 w-4">🔽</i>
+            </button>
+            <button class="bg-gray-200 text-black px-4 py-2 rounded-md flex items-center gap-2">
+                Not Verified Users
+                <i class="h-4 w-4">🔽</i>
+            </button>
+            <button class="bg-gray-200 text-black px-4 py-2 rounded-md flex items-center gap-2">
+                Filter by Date
+                <i class="h-4 w-4">📅</i>
+            </button>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full border border-gray-200">
+                <thead>
+                    <tr class="bg-blue-100 text-left whitespace-nowrap">
+                        <th class="p-2 border">S.No.</th>
+                        <th class="p-2 border">UID No.</th>
+                        <th class="p-2 border">Name</th>
+                        <th class="p-2 border">Email</th>
+                        <th class="p-2 border">Phone No.</th>
+                        <th class="p-2 border">Whatsapp No.</th>
+                        <th class="p-2 border">Gender</th>
+                        <th class="p-2 border">Degree</th>
+                        <th class="p-2 border">Birthplace State</th>
+                        <th class="p-2 border">College Name</th>
+                        <th class="p-2 border">College State</th>
+                        <th class="p-2 border">Passing Year</th>
+                        <th class="p-2 border">Account Creation Date</th>
+                        <th class="p-2 border">Status</th>
+                        <th class="p-2 border">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700 whitespace-nowrap">
+                    <tr class="bg-white">
+                        <td class="p-2 border">1</td>
+                        <td class="p-2 border">--</td>
+                        <td class="p-2 border">Yash Hello</td>
+                        <td class="p-2 border">yash@mail.com</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">Male</td>
+                        <td class="p-2 border">Agricultural Science</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                        <td class="p-2 border">OISTd</td>
+                <td class="p-2 border">Andhra Pradesh</td>
+                <td class="p-2 border">2025</td>
+                <td class="p-2 border">Jan 14, 2025 - 15:59</td>
+                <td class="p-2 border text-green-600 font-bold"><i data-lucide="user-check" class="h-5 w-5"></i>Verified</td>
+                <td class="p-2 border"><button class="bg-blue-500 text-white px-3 py-1 rounded">View</button></td>
+                    </tr>
+                    <tr class="bg-gray-50 whitespace-nowrap">
+                        <td class="p-2 border">2</td>
+                        <td class="p-2 border">--</td>
+                        <td class="p-2 border">Yash Bye</td>
+                        <td class="p-2 border">yash2@mail.com</td>
+                        <td class="p-2 border">9165123917</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">Male</td>
+                        <td class="p-2 border">Agricultural Science</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                        <td class="p-2 border">OISTd</td>
+                <td class="p-2 border">Andhra Pradesh</td>
+                <td class="p-2 border">2025</td>
+                <td class="p-2 border">Jan 14, 2025 - 15:59</td>
+                <td class="p-2 border text-green-600 font-bold">❌ Not Verified</td>
+                <td class="p-2 border"><button class="bg-blue-500 text-white px-3 py-1 rounded">View</button></td>
+                    </tr>
+                    <tr class="bg-white whitespace-nowrap">
+                        <td class="p-2 border">3</td>
+                        <td class="p-2 border">--</td>
+                        <td class="p-2 border">Yash Hello</td>
+                        <td class="p-2 border">yash@mail.com</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">Male</td>
+                        <td class="p-2 border">Agricultural Science</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                        <td class="p-2 border">OISTd</td>
+                <td class="p-2 border">Andhra Pradesh</td>
+                <td class="p-2 border">2025</td>
+                <td class="p-2 border">Jan 14, 2025 - 15:59</td>
+                <td class="p-2 border text-green-600 font-bold">⏳ Under Verification</td>
+                <td class="p-2 border"><button class="bg-blue-500 text-white px-3 py-1 rounded">View</button></td>
+                    </tr>
+                    <tr class="bg-white whitespace-nowrap">
+                        <td class="p-2 border">3</td>
+                        <td class="p-2 border">--</td>
+                        <td class="p-2 border">Yash Hello</td>
+                        <td class="p-2 border">yash@mail.com</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">Male</td>
+                        <td class="p-2 border">Agricultural Science</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                        <td class="p-2 border">OISTd</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                <td class="p-2 border">2025</td>
+                <td class="p-2 border">Jan 14, 2025 - 15:59</td>
+                <td class="p-2 border text-green-600 font-bold">✅ Verified</td>
+                <td class="p-2 border"><button class="bg-blue-500 text-white px-3 py-1 rounded">View</button></td>
+                    </tr>
+                    <tr class="bg-white whitespace-nowrap">
+                        <td class="p-2 border">3</td>
+                        <td class="p-2 border">--</td>
+                        <td class="p-2 border">Yash Hello</td>
+                        <td class="p-2 border">yash@mail.com</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">Male</td>
+                        <td class="p-2 border">Agricultural Science</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                        <td class="p-2 border">OISTd</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                <td class="p-2 border">2025</td>
+                <td class="p-2 border">Jan 14, 2025 - 15:59</td>
+                <td class="p-2 border text-green-600 font-bold">❌ Rejected Verification</td>
+                <td class="p-2 border"><button class="bg-blue-500 text-white px-3 py-1 rounded">View</button></td>
+                    </tr>
+                    <tr class="bg-white whitespace-nowrap">
+                        <td class="p-2 border">3</td>
+                        <td class="p-2 border">--</td>
+                        <td class="p-2 border">Yash Hello</td>
+                        <td class="p-2 border">yash@mail.com</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">Male</td>
+                        <td class="p-2 border">Agricultural Science</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                        <td class="p-2 border">OISTd</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                <td class="p-2 border">2025</td>
+                <td class="p-2 border">Jan 14, 2025 - 15:59</td>
+                <td class="p-2 border text-green-600 font-bold">✅ Verified</td>
+                <td class="p-2 border"><button class="bg-blue-500 text-white px-3 py-1 rounded">View</button></td>
+                    </tr>
+                    <tr class="bg-white whitespace-nowrap">
+                        <td class="p-2 border">3</td>
+                        <td class="p-2 border">--</td>
+                        <td class="p-2 border">Yash Hello</td>
+                        <td class="p-2 border">yash@mail.com</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">Male</td>
+                        <td class="p-2 border">Agricultural Science</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                        <td class="p-2 border">OISTd</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                <td class="p-2 border">2025</td>
+                <td class="p-2 border">Jan 14, 2025 - 15:59</td>
+                <td class="p-2 border text-green-600 font-bold">✅ Verified</td>
+                <td class="p-2 border"><button class="bg-blue-500 text-white px-3 py-1 rounded">View</button></td>
+                    </tr>
+                    <tr class="bg-white whitespace-nowrap">
+                        <td class="p-2 border">3</td>
+                        <td class="p-2 border">--</td>
+                        <td class="p-2 border">Yash Hello</td>
+                        <td class="p-2 border">yash@mail.com</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">Male</td>
+                        <td class="p-2 border">Agricultural Science</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                        <td class="p-2 border">OISTd</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                <td class="p-2 border">2025</td>
+                <td class="p-2 border">Jan 14, 2025 - 15:59</td>
+                <td class="p-2 border text-green-600 font-bold">✅ Verified</td>
+                <td class="p-2 border"><button class="bg-blue-500 text-white px-3 py-1 rounded">View</button></td>
+                    </tr>
+                    <tr class="bg-white whitespace-nowrap">
+                        <td class="p-2 border">3</td>
+                        <td class="p-2 border">--</td>
+                        <td class="p-2 border">Yash Hello</td>
+                        <td class="p-2 border">yash@mail.com</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">9165363917</td>
+                        <td class="p-2 border">Male</td>
+                        <td class="p-2 border">Agricultural Science</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                        <td class="p-2 border">OISTd</td>
+                        <td class="p-2 border">Andhra Pradesh</td>
+                <td class="p-2 border">2025</td>
+                <td class="p-2 border">Jan 14, 2025 - 15:59</td>
+                <td class="p-2 border text-green-600 font-bold">✅ Verified</td>
+                <td class="p-2 border"><button class="bg-blue-500 text-white px-3 py-1 rounded">View</button></td>
+                    </tr>   
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex items-center justify-center gap-5 mt-4">
+            <div class="flex items-center gap-2">
+                <button class="px-3 py-2 border rounded-md bg-gray-200">◀</button>
+                <button class="px-3 py-2 border rounded-md bg-blue-600 text-white">1</button>
+                <button class="px-3 py-2 border rounded-md bg-gray-200">2</button>
+                <button class="px-3 py-2 border rounded-md bg-gray-200">▶</button>
+            </div>
+            <div class="flex items-center gap-2">
+                <input type="text" class="border px-3 py-2 w-10 text-center rounded-md" placeholder="1">
+                <button class="px-4 py-2 bg-blue-600 text-white rounded-md">Go</button>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>
