@@ -133,7 +133,7 @@ a.text-white:hover {
   border: none;
   border-bottom: 1px solid #dee2e6;
   border-radius: 0;
-  padding: 0.5rem 0;
+  padding: 3px;
   color: #424242;
   font-size: 13px;
   font-weight: 300;
@@ -141,6 +141,8 @@ a.text-white:hover {
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+  border: 2px solid #757575;
+  border-radius: 5px;
 }
 
 #password.form-control {
@@ -158,6 +160,7 @@ a.text-white:hover {
   height: 22.53px;
   gap: 0px;
   opacity: 0px;
+  font-weight: bold;
 }
 
 .password-field {
