@@ -35,8 +35,7 @@
   <header class="bg-white shadow-md p-4">
     <div class="container mx-auto flex items-center justify-between">
         <!-- Logo / Title -->
-        <h1 class="text-3xl font-bold pl-7" style="color: #003DD1;">Hiremi</h1>
-
+        <h1 class="text-3xl font-bold  pl-7 text-blue-600">Hiremi</h1>
 
         <!-- Search Bar -->
         <div class="flex-1 mx-4">
@@ -76,7 +75,7 @@
   <!-- Dashboard Layout -->
   <div class="flex">
     <!-- Sidebar -->
-    <div class="text-white  p-9 flex flex-col pt-10  gap-4" style="background-color: #003DD1;">
+    <div class=" bg-blue-800 text-white  p-9 flex flex-col pt-10  gap-4">
       <button onclick="toggleMenu()" class="text-white">
         <i data-lucide="menu"></i>
       </button>
@@ -174,121 +173,66 @@
       <div class="flex-1">
         <!-- Header -->
 
-        <div class="p-2  pt-7">  <!-- Reduced padding -->
+        <div class="p-2  bg-white pt-7">  <!-- Reduced padding -->
           <h1 class="text-xl font-semibold mb-4">Application Dashboard</h1>  <!-- Reduced font size and margin -->
-          <div class="grid grid-cols-5 gap-2 mb-4">  <!-- Reduced grid gap and margin -->
+          <div class="grid grid-cols-5 mb-4">  <!-- Reduced grid gap and margin -->
             <!-- Total Accounts Created -->
-            <div class="bg-white shadow-lg p-3 rounded-lg h-32 cursor-pointer" onclick="window.location.href='index.html'">  <!-- Reduced padding and height -->
-              <div
-                  class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center mb-2"
-                >
-                  <img
-                    src="assets/Totalacc.svg"
-                    alt="User Icon"
-                    class="h-8 w-8"
-                  />
-                </div>
-                <div class="text-xs font-semibold text-gray-500">
-                  Total Accounts Created
-                </div>
-
-                <!-- Reduced font size -->
-                <div class="text-xl font-bold">33</div>
-                <!-- Reduced font size -->
+            <div class="bg-white  p-3   h-[229px] cursor-pointer" onclick="window.location.href='index.html'">  <!-- Reduced padding and height -->
+              <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
+                <i data-lucide="user" class="h-5 w-5 bg-yellow-300 rounded-full text-yellow-600"></i>  <!-- Reduced icon size -->
               </div>
+              <div class="text-xs font-semibold text-gray-500">
 
-              <!-- Verified Users -->
-              <div
-                class="bg-white shadow-lg p-3 rounded-lg shadow-sm h-32 cursor-pointer"
-              >
-                <!-- Reduced padding and height -->
-                <div class="w-8 h-8 flex items-center justify-center mb-2">
-                  <img
-                    src="assets/Verified.svg"
-                    alt="User Icon"
-                    class="h-8 w-8"
-                  />
-                  <!-- Reduced icon size -->
-                </div>
-                <div class="text-xs font-semibold text-gray-500">
-                  Verified Users
-                </div>
-                <!-- Reduced font size -->
-                <div class="text-xl font-bold">22</div>
-                <!-- Reduced font size -->
-              </div>
+                Total Accounts Created</div>  <!-- Reduced font size -->
+              <div class="text-xl font-bold">33</div>  <!-- Reduced font size -->
+              <div class="w-0.5 h-16 text-black bg-white"></div>
 
-              <!-- Under Verification -->
-              <div
-                class="bg-white shadow-lg p-3 rounded-lg shadow-sm h-32 cursor-pointer"
-              >
-                <!-- Reduced padding and height -->
-                <div class="w-8 h-8 flex items-center justify-center mb-2">
-                  <img
-                    src="assets/UnderVerifi.svg"
-                    alt="User Icon"
-                    class="h-8 w-8"
-                  />
-                  <!-- Reduced icon size -->
-                </div>
-                <div class="text-xs font-semibold text-gray-500">
-                  Under Verification
-                </div>
-                <!-- Reduced font size -->
-                <div class="text-xl font-bold">8</div>
-                <!-- Reduced font size -->
+            </div>
+            
+        
+            <!-- Verified Users -->
+            <div class="\bg-white  p-3   h-[229px] cursor-pointer">  <!-- Reduced padding and height -->
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
+                <i data-lucide="check-circle" class="h-4 w-4 text-white"></i>  <!-- Reduced icon size -->
               </div>
-
-              <!-- Not Verified Users -->
-              <div
-                class="bg-white shadow-lg p-3 rounded-lg shadow-sm h-32 cursor-pointer"
-              >
-                <!-- Reduced padding and height -->
-                <div class="w-8 h-8 flex items-center justify-center mb-2">
-                  <img
-                    src="assets/NotVerifi.svg"
-                    alt="User Icon"
-                    class="h-8 w-8"
-                  />
-                  <!-- Reduced icon size -->
-                </div>
-                <div class="text-xs font-semibold text-gray-500">
-                  Not Verified Users
-                </div>
-                <!-- Reduced font size -->
-                <div class="text-xl font-bold">1</div>
-                <!-- Reduced font size -->
+              <div class="text-xs font-semibold text-gray-500">Verified Users</div>  <!-- Reduced font size -->
+              <div class="text-xl font-bold">22</div>  <!-- Reduced font size -->
+            </div>
+        
+            <!-- Under Verification -->
+            <div class="bg-white  p-3   h-[229px] cursor-pointer">  <!-- Reduced padding and height -->
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
+                <i data-lucide="clock" class="h-4 w-4 text-white"></i>  <!-- Reduced icon size -->
               </div>
-
-              <!-- Rejected In Verification -->
-              <div
-                class="bg-white shadow-lg p-3 rounded-lg shadow-sm h-32 cursor-pointer"
-              >
-                <!-- Reduced padding and height -->
-                <div class="w-8 h-8 flex items-center justify-center mb-2">
-                  <img
-                    src="assets/Rejected.svg"
-                    alt="User Icon"
-                    class="h-8 w-8"
-                  />
-                  <!-- Reduced icon size -->
-                </div>
-                <div class="text-xs font-semibold text-gray-500">
-                  Rejected In Verification
-                </div>
-                <!-- Reduced font size -->
-                <div class="text-xl font-bold">2</div>
-                <!-- Reduced font size -->
+              <div class="text-xs font-semibold text-gray-500">Under Verification</div>  <!-- Reduced font size -->
+              <div class="text-xl font-bold">8</div>  <!-- Reduced font size -->
+            </div>
+        
+            <!-- Not Verified Users -->
+            <div class="bg-white  p-3   h-[229px] cursor-pointer">  <!-- Reduced padding and height -->
+              <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
+                <i data-lucide="x-circle" class="h-4 w-4 text-white"></i>  <!-- Reduced icon size -->
               </div>
+              <div class="text-xs font-semibold text-gray-500">Not Verified Users</div>  <!-- Reduced font size -->
+              <div class="text-xl font-bold">1</div>  <!-- Reduced font size -->
+            </div>
+        
+            <!-- Rejected In Verification -->
+            <div class="bg-white  p-3   h-[229px] cursor-pointer">  <!-- Reduced padding and height -->
+              <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
+                <i data-lucide="alert-circle" class="h-4 w-4 text-white"></i>  <!-- Reduced icon size -->
+              </div>
+              <div class="text-xs font-semibold text-gray-500">Rejected In Verification</div>  <!-- Reduced font size -->
+              <div class="text-xl font-bold">2</div>  <!-- Reduced font size -->
             </div>
           </div>
+        </div>
+
         <div class="mb-4 p-4 bg-white">  <!-- Reduced padding and margin -->
-          <!-- Reduced padding and margin -->
-          <h2 class="text-xl font-semibold mb-2">Hiremi 360 Program</h2>
-          <!-- Reduced font size -->
-          <div class="grid grid-cols-3 gap-2">
-            <!-- Reduced grid gap -->
+          <h2 class="text-xl font-semibold mb-2">Hiremi 360 Program</h2>  <!-- Reduced font size -->
+          <div class="grid grid-cols-3 gap-2">  <!-- Reduced grid gap -->
             <!-- Program Cards -->
+<<<<<<< HEAD
             <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <!-- Reduced padding -->
               <div class="flex items-start gap-2">
@@ -299,94 +243,81 @@
                   class="h-8 w-8"
                 />
                 <!-- Reduced icon size -->
+=======
+            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">  <!-- Reduced padding -->
+              <div class="flex items-start gap-2">  <!-- Reduced gap -->
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>  <!-- Reduced icon size -->
+>>>>>>> b3037983c75d055d582e847a55533e91c8868201
                 <div>
-                  <div class="text-xl font-bold">1259</div>
-                  <!-- Reduced font size -->
-                  <div class="text-sm text-gray-500">
-                    Training + Internship
-                  </div>
-                  <!-- Reduced font size -->
+                  <div class="text-xl font-bold">1259</div>  <!-- Reduced font size -->
+                  <div class="text-sm text-gray-500">Training + Internship</div>  <!-- Reduced font size -->
                 </div>
               </div>
             </div>
-
+        
             <!-- Repeat the same structure for other cards -->
             <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <div class="flex items-start gap-2">
-                <img
-                  src="assets/Unimentor.svg"
-                  alt="User Icon"
-                  class="h-8 w-8"
-                />
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>
                 <div>
                   <div class="text-xl font-bold">1259</div>
-                  <div class="text-sm text-gray-500">
-                    Training + Internship
-                  </div>
+                  <div class="text-sm text-gray-500">Training + Internship</div>
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> b3037983c75d055d582e847a55533e91c8868201
             <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <div class="flex items-start gap-2">
-                <img
-                src="assets/Training.svg"
-                alt="User Icon"
-                class="h-8 w-8"
-              />
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>
                 <div>
                   <div class="text-xl font-bold">1259</div>
-                  <div class="text-sm text-gray-500">
-                    Training + Internship
-                  </div>
+                  <div class="text-sm text-gray-500">Training + Internship</div>
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> b3037983c75d055d582e847a55533e91c8868201
             <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <div class="flex items-start gap-2">
-                <img
-                  src="assets/Training.svg"
-                  alt="User Icon"
-                  class="h-8 w-8"
-                />
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>
                 <div>
                   <div class="text-xl font-bold">1259</div>
-                  <div class="text-sm text-gray-500">
-                    Training + Internship
-                  </div>
+                  <div class="text-sm text-gray-500">Training + Internship</div>
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> b3037983c75d055d582e847a55533e91c8868201
             <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <div class="flex items-start gap-2">
-                <img
-                src="assets/Training.svg"
-                alt="User Icon"
-                class="h-8 w-8"
-              />
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>
                 <div>
                   <div class="text-xl font-bold">1259</div>
-                  <div class="text-sm text-gray-500">
-                    Training + Internship
-                  </div>
+                  <div class="text-sm text-gray-500">Training + Internship</div>
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> b3037983c75d055d582e847a55533e91c8868201
             <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <div class="flex items-start gap-2">
-                <img
-                src="assets/Training.svg"
-                alt="User Icon"
-                class="h-8 w-8"
-              />
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>
                 <div>
                   <div class="text-xl font-bold">1259</div>
-                  <div class="text-sm text-gray-500">
-                    Training + Internship
-                  </div>
+                  <div class="text-sm text-gray-500">Training + Internship</div>
                 </div>
               </div>
             </div>
@@ -574,23 +505,36 @@
         <!-- Current Opportunities Section -->
         <h2 class="text-lg font-bold mb-3">Current Opportunities</h2>
         <div class="space-y-3">
+<<<<<<< HEAD
           <!-- Internships Card -->
           <div class="current-seeker-tabs flex justify-between items-center bg-purple-100 p-3 rounded-md border border-purple-300 hover:bg-purple-400 hover:border-purple-500 hover:text-white transition duration-200">
             <div class="flex items-center gap-2">
               <img src="assets/Internships.svg" alt="Internships Icon" class="h-8 w-8" />
+=======
+          <div class="current-seeker-tabs flex justify-between items-center bg-purple-100 p-3  border border-purple-300 hover:bg-purple-400 hover:border-purple-500 hover:text-white transition duration-200">
+            <div class="flex items-center gap-2">
+              <i data-lucide="school" class="h-5 w-5 text-purple-600"></i>
+>>>>>>> b3037983c75d055d582e847a55533e91c8868201
               <span class="font-medium">Internships</span>
             </div>
             <span class="font-semibold text-gray-700 hover:text-white">1000</span>
           </div>
+<<<<<<< HEAD
         
           <!-- Fresher Jobs Card -->
           <div class="current-seeker-tabs flex justify-between items-center bg-green-100 p-3 rounded-md border border-green-300 hover:bg-green-400 hover:border-green-500 hover:text-white transition duration-200">
             <div class="flex items-center gap-2">
               <img src="assets/Fresher.svg" alt="Fresher Jobs Icon" class="h-8 w-8" />
+=======
+          <div class="current-seeker-tabs flex justify-between items-center bg-green-100 p-3  border border-green-300 hover:bg-green-400 hover:border-green-500 hover:text-white transition duration-200">
+            <div class="flex items-center gap-2">
+              <i data-lucide="briefcase" class="h-5 w-5 text-green-600"></i>
+>>>>>>> b3037983c75d055d582e847a55533e91c8868201
               <span class="font-medium">Fresher Jobs</span>
             </div>
             <span class="font-semibold text-gray-700 hover:text-white">2000</span>
           </div>
+<<<<<<< HEAD
         
           <!-- Experienced Jobs Card -->
           <div class="current-seeker-tabs flex justify-between items-center bg-red-100 p-3 rounded-md border border-red-300 hover:bg-red-400 hover:border-red-500 hover:text-white transition duration-200">
@@ -626,6 +570,11 @@
           <div class="current-seeker-tabs flex justify-between items-center bg-red-100 p-3 rounded-md border border-red-300 hover:bg-red-400 hover:border-red-500 hover:text-white transition duration-200">
             <div class="flex items-center gap-2">
               <img src="assets/Experienced.svg" alt="Experienced Jobs Icon" class="h-8 w-8" />
+=======
+          <div class="current-seeker-tabs flex justify-between items-center bg-red-100 p-3  border border-red-300 hover:bg-red-400 hover:border-red-500 hover:text-white transition duration-200">
+            <div class="flex items-center gap-2">
+              <i data-lucide="alert-octagon" class="h-5 w-5 text-red-600"></i>
+>>>>>>> b3037983c75d055d582e847a55533e91c8868201
               <span class="font-medium">Experienced Jobs</span>
             </div>
             <span class="font-semibold text-gray-700 hover:text-white">1000</span>
