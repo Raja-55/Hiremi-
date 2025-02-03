@@ -136,18 +136,20 @@ a.text-white:hover {
 }
 
 button {
-  display: flex;
+ display: flex;
   align-items: center;
   justify-content: center;
   background: #003DD1;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 20px;
   margin-top: 40px;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 20px;
   width: 30vw;
+  max-width: 360px;
+  transition: background 0.3s ease;
 }
 
 button:hover {
@@ -208,6 +210,13 @@ a {
     height: 40px;
     bottom: 10px;
     right: 10px;
+  }
+}
+@media (max-width: 768px) {
+  button {
+    max-width: 250px;
+    font-size: 0.95rem;
+    justify-self: center;
   }
 }
 @media (max-width: 768px) {
