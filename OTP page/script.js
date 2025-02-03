@@ -41,8 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             messageBox.style.color = "green";
             messageBox.textContent = "OTP Verified Successfully!";
             setTimeout(() => {
-                alert("Redirecting..."); // Replace with actual redirection logic
-                window.location.href = "dashboard.html"; // Example redirection
+                window.location.href = "./Dashboard/Dashboard.html"; // Example redirection
             }, 1000);
         } else {
             messageBox.style.color = "red";
