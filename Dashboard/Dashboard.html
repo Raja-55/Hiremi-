@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script> <!-- Lucide Icons -->
   <style>
-     .dropdown-content {
+      .dropdown-content {
       display: none;
     }
     .dropdown-content.show {
@@ -18,6 +18,16 @@
     }
     .sidebar.hidden {
       transform: translateX(-100%);
+    }
+    .program-tab:hover{
+      border: 2px solid black ;
+      transition: background 0.3s ease;
+      cursor: pointer;
+    }
+    .current-seeker-tabs{
+      height: 71px;
+      width: 220px;
+      radius:8px
     }
   </style>
 </head>
@@ -279,7 +289,7 @@
           <div class="grid grid-cols-3 gap-2">
             <!-- Reduced grid gap -->
             <!-- Program Cards -->
-            <div class="bg-white p-4 rounded-lg shadow-lg">
+            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <!-- Reduced padding -->
               <div class="flex items-start gap-2">
                 <!-- Reduced gap -->
@@ -301,7 +311,7 @@
             </div>
 
             <!-- Repeat the same structure for other cards -->
-            <div class="bg-white p-4 rounded-lg shadow-lg">
+            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <div class="flex items-start gap-2">
                 <img
                   src="assets/Unimentor.svg"
@@ -317,7 +327,7 @@
               </div>
             </div>
 
-            <div class="bg-white p-4 rounded-lg shadow-lg">
+            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <div class="flex items-start gap-2">
                 <img
                 src="assets/Training.svg"
@@ -333,7 +343,7 @@
               </div>
             </div>
 
-            <div class="bg-white p-4 rounded-lg shadow-lg">
+            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <div class="flex items-start gap-2">
                 <img
                   src="assets/Training.svg"
@@ -349,7 +359,7 @@
               </div>
             </div>
 
-            <div class="bg-white p-4 rounded-lg shadow-lg">
+            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <div class="flex items-start gap-2">
                 <img
                 src="assets/Training.svg"
@@ -365,7 +375,7 @@
               </div>
             </div>
 
-            <div class="bg-white p-4 rounded-lg shadow-lg">
+            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
               <div class="flex items-start gap-2">
                 <img
                 src="assets/Training.svg"
@@ -564,78 +574,64 @@
         <!-- Current Opportunities Section -->
         <h2 class="text-lg font-bold mb-3">Current Opportunities</h2>
         <div class="space-y-3">
-          <div class="flex justify-between items-center bg-purple-100 p-3 rounded-md border border-purple-300">
+          <!-- Internships Card -->
+          <div class="current-seeker-tabs flex justify-between items-center bg-purple-100 p-3 rounded-md border border-purple-300 hover:bg-purple-400 hover:border-purple-500 hover:text-white transition duration-200">
             <div class="flex items-center gap-2">
-              <img
-              src="assets/Internships.svg"
-              alt="User Icon"
-              class="h-8 w-8"
-            />
+              <img src="assets/Internships.svg" alt="Internships Icon" class="h-8 w-8" />
               <span class="font-medium">Internships</span>
             </div>
-            <span class="font-semibold text-gray-700">1000</span>
+            <span class="font-semibold text-gray-700 hover:text-white">1000</span>
           </div>
-          <div class="flex justify-between items-center bg-green-100 p-3 rounded-md border border-green-300">
+        
+          <!-- Fresher Jobs Card -->
+          <div class="current-seeker-tabs flex justify-between items-center bg-green-100 p-3 rounded-md border border-green-300 hover:bg-green-400 hover:border-green-500 hover:text-white transition duration-200">
             <div class="flex items-center gap-2">
-              <img
-              src="assets/Fresher.svg"
-              alt="User Icon"
-              class="h-8 w-8"
-            />
+              <img src="assets/Fresher.svg" alt="Fresher Jobs Icon" class="h-8 w-8" />
               <span class="font-medium">Fresher Jobs</span>
             </div>
-            <span class="font-semibold text-gray-700">2000</span>
+            <span class="font-semibold text-gray-700 hover:text-white">2000</span>
           </div>
-          <div class="flex justify-between items-center bg-red-100 p-3 rounded-md border border-red-300">
+        
+          <!-- Experienced Jobs Card -->
+          <div class="current-seeker-tabs flex justify-between items-center bg-red-100 p-3 rounded-md border border-red-300 hover:bg-red-400 hover:border-red-500 hover:text-white transition duration-200">
             <div class="flex items-center gap-2">
-              <img
-                  src="assets/Experienced.svg"
-                  alt="User Icon"
-                  class="h-8 w-8"
-                />
+              <img src="assets/Experienced.svg" alt="Experienced Jobs Icon" class="h-8 w-8" />
               <span class="font-medium">Experienced Jobs</span>
             </div>
-            <span class="font-semibold text-gray-700">1000</span>
+            <span class="font-semibold text-gray-700 hover:text-white">1000</span>
           </div>
         </div>
-
         <!-- Current Seekers Section -->
-        <h2 class="text-lg font-bold mt-6 mb-3">Current Seekers</h2>
+        <h2 class="text-lg font-bold mb-3">Current Opportunities</h2>
         <div class="space-y-3">
-          <div class="flex justify-between items-center bg-purple-100 p-3 rounded-md border border-purple-300">
+          <!-- Internships Card -->
+          <div class="current-seeker-tabs flex justify-between items-center bg-purple-100 p-3 rounded-md border border-purple-300 hover:bg-purple-400 hover:border-purple-500 hover:text-white transition duration-200">
             <div class="flex items-center gap-2">
-              <img
-              src="assets/Internships.svg"
-              alt="User Icon"
-              class="h-8 w-8"
-            />
+              <img src="assets/Internships.svg" alt="Internships Icon" class="h-8 w-8" />
               <span class="font-medium">Internships</span>
             </div>
-            <span class="font-semibold text-gray-700">1000</span>
+            <span class="font-semibold text-gray-700 hover:text-white">1000</span>
           </div>
-          <div class="flex justify-between items-center bg-green-100 p-3 rounded-md border border-green-300">
+        
+          <!-- Fresher Jobs Card -->
+          <div class="current-seeker-tabs flex justify-between items-center bg-green-100 p-3 rounded-md border border-green-300 hover:bg-green-400 hover:border-green-500 hover:text-white transition duration-200">
             <div class="flex items-center gap-2">
-              <img
-              src="assets/Fresher.svg"
-              alt="User Icon"
-              class="h-8 w-8"
-            />
+              <img src="assets/Fresher.svg" alt="Fresher Jobs Icon" class="h-8 w-8" />
               <span class="font-medium">Fresher Jobs</span>
             </div>
-            <span class="font-semibold text-gray-700">2000</span>
+            <span class="font-semibold text-gray-700 hover:text-white">2000</span>
           </div>
-          <div class="flex justify-between items-center bg-red-100 p-3 rounded-md border border-red-300">
+        
+          <!-- Experienced Jobs Card -->
+          <div class="current-seeker-tabs flex justify-between items-center bg-red-100 p-3 rounded-md border border-red-300 hover:bg-red-400 hover:border-red-500 hover:text-white transition duration-200">
             <div class="flex items-center gap-2">
-              <img
-              src="assets/Experienced.svg"
-              alt="User Icon"
-              class="h-8 w-8"
-            />
+              <img src="assets/Experienced.svg" alt="Experienced Jobs Icon" class="h-8 w-8" />
               <span class="font-medium">Experienced Jobs</span>
             </div>
-            <span class="font-semibold text-gray-700">1000</span>
+            <span class="font-semibold text-gray-700 hover:text-white">1000</span>
           </div>
         </div>
+        
 
         <!-- Resolved Queries Section -->
         <div class="mt-6 border-t pt-7 border rounded-lg p-6   border-gray-200">
