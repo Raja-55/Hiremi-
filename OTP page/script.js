@@ -38,12 +38,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (enteredOTP === correctOTP) {
-      messageBox.style.color = "green";
-      messageBox.textContent = "OTP Verified Successfully!";
-      setTimeout(() => {
-        window.location.href = "Dashboard.html"; // Example redirection
-      }, 1000);
-    } else {
+            messageBox.style.color = "green";
+            messageBox.textContent = "OTP Verified Successfully!";
+
+             // Change OTP input boxes to green
+    otpInputs.forEach((input) => {
+        input.value = "";
+        input.style.border = "2px solid green";
+    });
+
+    // Delay the redirection to show success message and styling
+    setTimeout(() => {
+        console.log("correct OTP");
+        window.location.href = "./Dashboard/Dashboard.html"; // Redirect
+    }, 900);
+           
+        } else {
       messageBox.style.color = "red";
       messageBox.textContent = "Incorrect OTP. Please try again!";
 
