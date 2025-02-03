@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hiremi Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script> <!-- Lucide Icons -->
+  <style>
+     .dropdown-content {
+      display: none;
+    }
+    .dropdown-content.show {
+      display: block;
+    }
+    .sidebar {
+      transition: transform 0.3s ease-in-out;
+    }
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+  </style>
+</head>
+<body class="bg-gray-50  ">
+  <header class="bg-white shadow-md p-4">
+    <div class="container mx-auto flex items-center justify-between">
+        <!-- Logo / Title -->
+        <h1 class="text-2xl font-bold text-blue-600">Hiremi</h1>
+
+        <!-- Search Bar -->
+        <div class="flex-1 mx-4">
+            <div class="relative w-full max-w-md mx-auto">
+                <input type="text" placeholder="Search..." 
+                    class="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" 
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010 17.5a7.5 7.5 0 006.65-3.85z"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Icons -->
+        <div class="flex items-center space-x-4">
+            <!-- Notification Icon -->
+            <button class="relative p-2 text-gray-600 hover:text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14V11a6 6 0 10-12 0v3c0 .386-.151.735-.395 1.005L4 17h5m6 0a3 3 0 11-6 0"/>
+                </svg>
+                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+            </button>
+
+            <!-- Admin User Icon -->
+            <button class="p-2 text-gray-600 hover:text-blue-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 rounded-full border" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M5.121 17.804A10.013 10.013 0 0112 15c2.485 0 4.735.897 6.879 2.404M15 10a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+  <!-- Dashboard Layout -->
+  <div class="flex">
+    <!-- Sidebar -->
+    <div class="w-64 bg-blue-600 text-white p-9 flex flex-col pt-14 gap-5">
+      <div class="px-4 py-2 bg-white  text-black rounded-lg ">Main</div>
+      <nav class="space-y-1">
+        <a href="#" class="flex items-center gap-3 px-4 py-2  rounded bg-blue-700">
+          <i data-lucide="bar-chart-2" class="h-5 w-5"></i>Dashboard
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-700">
+          <i data-lucide="bar-chart-2" class="h-5 w-5"></i>Analytics
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-700">
+          <i data-lucide="download" class="h-5 w-5"></i>App Download Status
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-700">
+          <i data-lucide="users" class="h-5 w-5"></i>Total Accounts
+        </a>
+
+        <!-- Dropdown Section -->
+        <div class="pt-4 px-4 font-semibold cursor-pointer flex items-center justify-between" onclick="toggleDropdown('user-status')">
+          <span>User Status</span>
+          <i id="user-status-icon" data-lucide="chevron-down" class="h-4 w-4"></i>
+        </div>
+        <div id="user-status" class="dropdown-content">
+          <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-700">
+            <i data-lucide="user-check" class="h-5 w-5"></i>Verified Users
+          </a>
+          <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-700">
+            <i data-lucide="user-cog" class="h-5 w-5"></i>Under Verification
+          </a>
+          <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-700">
+            <i data-lucide="user-x" class="h-5 w-5"></i>Not Verified Users
+          </a>
+          <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-700">
+            <i data-lucide="x-circle" class="h-5 w-5"></i>Rejected Verification
+          </a>
+        </div>
+
+        <div class="pt-4 px-4 font-semibold cursor-pointer flex items-center justify-between" onclick="toggleDropdown('organization')">
+          <span>Organization</span>
+          <i id="organization-icon" data-lucide="chevron-down" class="h-4 w-4"></i>
+        </div>
+        <div id="organization" class="dropdown-content">
+          <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-700">
+            <i data-lucide="building-2" class="h-5 w-5"></i>Total Companies
+          </a>
+          <a href="#" class="flex items-center gap-3 px-4 py-2 rounded hover:bg-blue-700">
+            <i data-lucide="users" class="h-5 w-5"></i>Total HR Recruiters
+          </a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-auto flex">
+      <!-- Left Column (Existing Content) -->
+      <div class="flex-1">
+        <!-- Header -->
+
+        <div class="p-2  pt-7">  <!-- Reduced padding -->
+          <h1 class="text-xl font-semibold mb-4">Application Dashboard</h1>  <!-- Reduced font size and margin -->
+          <div class="grid grid-cols-5 gap-2 mb-4">  <!-- Reduced grid gap and margin -->
+            <!-- Total Accounts Created -->
+            <div class="bg-white shadow-lg p-3 rounded-lg h-32 cursor-pointer" onclick="window.location.href='index.html'">  <!-- Reduced padding and height -->
+              <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
+                <i data-lucide="user" class="h-5 w-5 bg-yellow-300 rounded-full text-yellow-600"></i>  <!-- Reduced icon size -->
+              </div>
+              <div class="text-xs font-semibold text-gray-500">Total Accounts Created</div>  <!-- Reduced font size -->
+              <div class="text-xl font-bold">33</div>  <!-- Reduced font size -->
+            </div>
+        
+            <!-- Verified Users -->
+            <div class="bg-white shadow-lg p-3 rounded-lg shadow-sm h-32 cursor-pointer">  <!-- Reduced padding and height -->
+              <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
+                <i data-lucide="check-circle" class="h-4 w-4 text-white"></i>  <!-- Reduced icon size -->
+              </div>
+              <div class="text-xs font-semibold text-gray-500">Verified Users</div>  <!-- Reduced font size -->
+              <div class="text-xl font-bold">22</div>  <!-- Reduced font size -->
+            </div>
+        
+            <!-- Under Verification -->
+            <div class="bg-white shadow-lg p-3 rounded-lg shadow-sm h-32 cursor-pointer">  <!-- Reduced padding and height -->
+              <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
+                <i data-lucide="clock" class="h-4 w-4 text-white"></i>  <!-- Reduced icon size -->
+              </div>
+              <div class="text-xs font-semibold text-gray-500">Under Verification</div>  <!-- Reduced font size -->
+              <div class="text-xl font-bold">8</div>  <!-- Reduced font size -->
+            </div>
+        
+            <!-- Not Verified Users -->
+            <div class="bg-white shadow-lg p-3 rounded-lg shadow-sm h-32 cursor-pointer">  <!-- Reduced padding and height -->
+              <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
+                <i data-lucide="x-circle" class="h-4 w-4 text-white"></i>  <!-- Reduced icon size -->
+              </div>
+              <div class="text-xs font-semibold text-gray-500">Not Verified Users</div>  <!-- Reduced font size -->
+              <div class="text-xl font-bold">1</div>  <!-- Reduced font size -->
+            </div>
+        
+            <!-- Rejected In Verification -->
+            <div class="bg-white shadow-lg p-3 rounded-lg shadow-sm h-32 cursor-pointer">  <!-- Reduced padding and height -->
+              <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
+                <i data-lucide="alert-circle" class="h-4 w-4 text-white"></i>  <!-- Reduced icon size -->
+              </div>
+              <div class="text-xs font-semibold text-gray-500">Rejected In Verification</div>  <!-- Reduced font size -->
+              <div class="text-xl font-bold">2</div>  <!-- Reduced font size -->
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-4 p-4 bg-white">  <!-- Reduced padding and margin -->
+          <h2 class="text-xl font-semibold mb-2">Hiremi 360 Program</h2>  <!-- Reduced font size -->
+          <div class="grid grid-cols-3 gap-2">  <!-- Reduced grid gap -->
+            <!-- Program Cards -->
+            <div class="bg-white p-4 rounded-lg shadow-lg">  <!-- Reduced padding -->
+              <div class="flex items-start gap-2">  <!-- Reduced gap -->
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>  <!-- Reduced icon size -->
+                <div>
+                  <div class="text-xl font-bold">1259</div>  <!-- Reduced font size -->
+                  <div class="text-sm text-gray-500">Training + Internship</div>  <!-- Reduced font size -->
+                </div>
+              </div>
+            </div>
+        
+            <!-- Repeat the same structure for other cards -->
+            <div class="bg-white p-4 rounded-lg shadow-lg">
+              <div class="flex items-start gap-2">
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>
+                <div>
+                  <div class="text-xl font-bold">1259</div>
+                  <div class="text-sm text-gray-500">Training + Internship</div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="bg-white p-4 rounded-lg shadow-lg">
+              <div class="flex items-start gap-2">
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>
+                <div>
+                  <div class="text-xl font-bold">1259</div>
+                  <div class="text-sm text-gray-500">Training + Internship</div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="bg-white p-4 rounded-lg shadow-lg">
+              <div class="flex items-start gap-2">
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>
+                <div>
+                  <div class="text-xl font-bold">1259</div>
+                  <div class="text-sm text-gray-500">Training + Internship</div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="bg-white p-4 rounded-lg shadow-lg">
+              <div class="flex items-start gap-2">
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>
+                <div>
+                  <div class="text-xl font-bold">1259</div>
+                  <div class="text-sm text-gray-500">Training + Internship</div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="bg-white p-4 rounded-lg shadow-lg">
+              <div class="flex items-start gap-2">
+                <i data-lucide="graduation-cap" class="h-5 w-5 text-blue-600"></i>
+                <div>
+                  <div class="text-xl font-bold">1259</div>
+                  <div class="text-sm text-gray-500">Training + Internship</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HR Dashboard -->
+        <div class="mb-3 px-4 bg-white">
+          <h2 class="text-xl font-semibold mb-2">HR's Dashboard</h2>
+          <div class="bg-white rounded-lg shadow-sm p-2">
+            <div class="grid grid-cols-3 gap-2">
+              <!-- Box Template -->
+              <div class="p-2 rounded-lg bg-gray-100 hover:bg-blue-50 transition-colors cursor-pointer">
+                <!-- Top Row -->
+                <div class="flex justify-between items-center">
+                  <div class="font-medium text-black text-sm">Verified</div>
+                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
+                </div>
+              
+                <!-- Bottom Row -->
+                <div class="flex justify-between items-center mt-1">
+                  <span class="text-xs font-medium text-gray-500">Total</span>
+                  <span class="text-black font-bold text-base">3242</span>
+                </div>
+              </div>
+        
+              <div class="p-2 rounded-lg bg-gray-100 hover:bg-blue-50 transition-colors cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <div class="font-medium text-black text-sm">Not Verified</div>
+                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                  <span class="text-xs font-medium text-gray-500">Total</span>
+                  <span class="text-black font-bold text-base">3242</span>
+                </div>
+              </div>
+        
+              <div class="p-2 rounded-lg bg-gray-100 hover:bg-blue-50 transition-colors cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <div class="font-medium text-black text-sm">Registered</div>
+                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                  <span class="text-xs font-medium text-gray-500">Total</span>
+                  <span class="text-black font-bold text-base">3242</span>
+                </div>
+              </div>
+        
+              <div class="p-2 rounded-lg bg-gray-100 hover:bg-red-300 transition-colors cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <div class="font-medium text-black text-sm">Post Approval</div>
+                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                  <span class="text-xs font-medium text-gray-500">Total</span>
+                  <span class="text-black font-bold text-base">3242</span>
+                </div>
+              </div>
+        
+              <div class="p-2 rounded-lg bg-gray-100 hover:bg-blue-300 transition-colors cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <div class="font-medium text-black text-sm">Demo Section</div>
+                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                  <span class="text-xs font-medium text-gray-500">Total</span>
+                  <span class="text-black font-bold text-base">3242</span>
+                </div>
+              </div>
+        
+              <div class="p-2 rounded-lg bg-gray-100 hover:bg-green-300 transition-colors cursor-pointer">
+                <div class="flex justify-between items-center">
+                  <div class="font-medium text-black text-sm">Demo Section</div>
+                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
+                </div>
+                <div class="flex justify-between items-center mt-1">
+                  <span class="text-xs font-medium text-gray-500">Total</span>
+                  <span class="text-black font-bold text-base">3242</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-md shadow-md p-6 w-full">
+        <!-- User Dashboard -->
+          <h1 class="text-xl font-bold mb-4">User Dashboard</h1>
+          <div class="flex gap-4">
+            <!-- Stats Box 1 -->
+            <div class="bg-gray-200 p-4 rounded-md shadow-md w-64">
+              <div class="grid grid-cols-2 gap-4">
+                  <!-- Column 1 -->
+                  <div class="space-y-3 pt-14">
+                      <p class="text-lg font-bold ">10<br>
+                          <span class="text-lm font-bold">Female User</span>
+                      </p>
+                  </div>
+  
+                  <!-- Column 2 -->
+                  <div class="space-y-3 pt-7">
+                      <p class="text-md font-medium border border-blue-300 rounded-md pl-2 bg-green-200 p-2">
+                          999 <br>
+                          <span class="flex items-center gap-1 font-light text-xs text-green-800">
+                              Verified
+                              <i data-lucide="arrow-right" class="h-4 w-4 text-green-500"></i>
+                          </span>
+                      </p>
+                      <p class="text-md font-medium border border-red-300 rounded-md pl-2 bg-red-200 p-2">
+                          99 <br>
+                          <span class="flex items-center gap-1 font-light text-xs text-red-800">
+                              Not Verified
+                              <i data-lucide="arrow-right" class="h-4 w-4 text-red-500"></i>
+                          </span>
+                      </p>
+                  </div>
+              </div>
+          </div>
+            <!-- Stats Box 2 -->
+            <div class="bg-gray-200 p-4 rounded-md shadow-md w-64">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-3 pt-14">
+                  <p class="text-lg font-bold">20 <br><span class="text-lm font-bold">Male User</span></p>
+                </div>
+                <div class="space-y-3 pt-7">
+                  <p class="text-md font-medium border border-blue-300 rounded-md pl-2 bg-green-200 p-2">
+                    999 <br>
+                    <span class="flex items-center gap-1 font-light text-xs text-green-800">
+                      Verified
+                      <i data-lucide="arrow-right" class="h-4 w-4 text-green-500"></i>
+                    </span>
+                  </p>
+                  <p class="text-md font-medium border border-red-300 rounded-md pl-2 bg-red-200 p-2">
+                    99 <br>
+                    <span class="flex items-center gap-1 font-light text-xs text-red-800">
+                      Not Verified
+                      <i data-lucide="arrow-right" class="h-4 w-4 text-red-500"></i>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+            
+            <!-- Information Boxes -->
+            <div class="grid grid-cols-3 gap-2">
+              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
+                Interested Domain
+                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+              </div>
+              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
+                Branch
+                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+              </div>
+              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
+                Degree
+                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+              </div>
+              <div class="bg-white border rounded-md shadow-md p-2  flex justify-between items-center h-[40px]">
+                College State
+                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+              </div>
+              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
+                Birth Place State
+                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+              </div>
+              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
+                Passing Year
+                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+              </div>
+              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
+                Current City
+                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+              </div>
+              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
+                Current State
+                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column (New Content) -->
+      <div class="w-80 p-6 space-y-6">
+        <!-- Current Opportunities Section -->
+        <h2 class="text-lg font-bold mb-3">Current Opportunities</h2>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center bg-purple-100 p-3 rounded-md border border-purple-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="school" class="h-5 w-5 text-purple-600"></i>
+              <span class="font-medium">Internships</span>
+            </div>
+            <span class="font-semibold text-gray-700">1000</span>
+          </div>
+          <div class="flex justify-between items-center bg-green-100 p-3 rounded-md border border-green-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="briefcase" class="h-5 w-5 text-green-600"></i>
+              <span class="font-medium">Fresher Jobs</span>
+            </div>
+            <span class="font-semibold text-gray-700">2000</span>
+          </div>
+          <div class="flex justify-between items-center bg-red-100 p-3 rounded-md border border-red-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="alert-octagon" class="h-5 w-5 text-red-600"></i>
+              <span class="font-medium">Experienced Jobs</span>
+            </div>
+            <span class="font-semibold text-gray-700">1000</span>
+          </div>
+        </div>
+
+        <!-- Current Seekers Section -->
+        <h2 class="text-lg font-bold mt-6 mb-3">Current Seekers</h2>
+        <div class="space-y-3">
+          <div class="flex justify-between items-center bg-purple-100 p-3 rounded-md border border-purple-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="school" class="h-5 w-5 text-purple-600"></i>
+              <span class="font-medium">Internships</span>
+            </div>
+            <span class="font-semibold text-gray-700">1000</span>
+          </div>
+          <div class="flex justify-between items-center bg-green-100 p-3 rounded-md border border-green-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="briefcase" class="h-5 w-5 text-green-600"></i>
+              <span class="font-medium">Fresher Jobs</span>
+            </div>
+            <span class="font-semibold text-gray-700">2000</span>
+          </div>
+          <div class="flex justify-between items-center bg-red-100 p-3 rounded-md border border-red-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="alert-octagon" class="h-5 w-5 text-red-600"></i>
+              <span class="font-medium">Experienced Jobs</span>
+            </div>
+            <span class="font-semibold text-gray-700">1000</span>
+          </div>
+        </div>
+
+        <!-- Resolved Queries Section -->
+        <div class="mt-6 border-t pt-7 border rounded-lg p-6   border-gray-200">
+          <div class="flex items-center gap-2">
+            <i data-lucide="help-circle" class="h-5 w-5 text-blue-600"></i>
+            <a href="#" class="text-blue-600 font-medium"><u>Resolved Queries</u></a>
+          </div>
+          <p class="text-xl font-semibold">50<span class="text-gray-500">/100</span></p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Initialize Lucide Icons -->
+  <script>
+    lucide.createIcons();
+
+    function toggleDropdown(id) {
+      const dropdown = document.getElementById(id);
+      const icon = document.getElementById(`${id}-icon`);
+      dropdown.classList.toggle('show');
+
+      // Toggle the icon between chevron-down and chevron-up
+      if (dropdown.classList.contains('show')) {
+        icon.setAttribute('data-lucide', 'chevron-up');
+      } else {
+        icon.setAttribute('data-lucide', 'chevron-down');
+      }
+      lucide.createIcons(); // Reinitialize icons to update the displayed icon
+    }
+  </script>
+</body>
+</html>
