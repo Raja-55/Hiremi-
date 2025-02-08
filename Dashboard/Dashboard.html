@@ -1,538 +1,802 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hiremi Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script> <!-- Lucide Icons -->
-  <style>
-     .dropdown-content {
-      display: none;
-    }
-    .dropdown-content.show {
-      display: block;
-    }
-    .sidebar {
-      transition: transform 0.3s ease-in-out;
-    }
-    .sidebar.hidden {
-      transform: translateX(-100%);
-    }
-    .program-tab:hover{
-      border: 2px solid black ;
-      transition: background 0.3s ease;
-      cursor: pointer;
-    }
-    .current-seeker-tabs{
-      height: 71px;
-      width: 220px;
-      radius:8px
-    }
-  </style>
-</head>
-<body class="bg-gray-50  ">
-  <header class="bg-white shadow-md p-4">
-    <div class="container mx-auto flex items-center justify-between">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hiremi Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Tailwind css-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <!--Bootstrap icons-->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Lucide Icons -->
+    <link rel="stylesheet" href="Dashboardstyle.css" />
+  </head>
+  <body class="bg-gray-50">
+    <header class="bg-white shadow-md p-4">
+      <div class="container mx-auto flex items-center justify-between">
         <!-- Logo / Title -->
-        <h1 class="text-3xl font-bold  pl-7 text-blue-600">Hiremi</h1>
+        <h1 class="text-3xl font-bold pl-7 text-blue-600">Hiremi</h1>
 
         <!-- Search Bar -->
         <div class="flex-1 mx-4">
-            <div class="relative w-full max-w-md mx-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-3 top-2.5 h-5 w-5 text-gray-400" 
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                        d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010 17.5a7.5 7.5 0 006.65-3.85z"/>
-                </svg>
-                <input type="text" placeholder="Search" 
-                    class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                
-            </div>
+          <div class="relative w-full max-w-md mx-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="absolute right-3 top-2.5 h-5 w-5 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010 17.5a7.5 7.5 0 006.65-3.85z"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Search"
+              class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
         </div>
 
         <!-- Icons -->
         <div class="flex items-center space-x-4">
-            <!-- Notification Icon -->
-            <button class="relative p-2 text-gray-600 hover:text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14V11a6 6 0 10-12 0v3c0 .386-.151.735-.395 1.005L4 17h5m6 0a3 3 0 11-6 0"/>
-                </svg>
-                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
-            </button>
+          <!-- Notification Icon -->
+          <button class="relative p-2 text-gray-600 hover:text-blue-600">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14V11a6 6 0 10-12 0v3c0 .386-.151.735-.395 1.005L4 17h5m6 0a3 3 0 11-6 0"
+              />
+            </svg>
+            <span
+              class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full"
+              >3</span
+            >
+          </button>
 
-            <!-- Admin User Icon -->
-            <button class="p-2 text-gray-600 hover:text-blue-600">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 rounded-full border" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                        d="M5.121 17.804A10.013 10.013 0 0112 15c2.485 0 4.735.897 6.879 2.404M15 10a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-            </button>
+          <!-- Admin User Icon -->
+          <button class="p-2 text-gray-600 hover:text-blue-600">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-8 rounded-full border"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5.121 17.804A10.013 10.013 0 0112 15c2.485 0 4.735.897 6.879 2.404M15 10a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+            </svg>
+          </button>
         </div>
-    </div>
-</header>
-  <!-- Dashboard Layout -->
-  <div class="flex">
-    <!-- Sidebar -->
-    <div class=" bg-blue-800 text-white  p-9 flex flex-col pt-10  gap-4">
-      <button onclick="toggleMenu()" class="text-white">
-        <i data-lucide="menu"></i>
-      </button>
-      <div id="menu-content">
-      <div class="px-4 py-2 bg-white font-bold  text-black rounded-lg ">Main</div>
-      <nav class="space-y-1 pt-4">
-        <a href="#" class="flex items-center font-bold  px-4 py-2  text-black rounded-lg bg-white">
-          
-          Dashboard
-        </a>
-        <a href="#" class="flex items-center text-sm  gap-3 px-4 py-2 rounded hover:bg-blue-700">
-          <i data-lucide="bar-chart-2" class="h-5 w-5"></i>Analytics
-        </a>
-        <a href="#" class="flex items-center text-sm  gap-3 px-4 py-2 rounded hover:bg-blue-700">
-          <i data-lucide="download" class="h-5 w-5"></i>App Download Status
-        </a>
-        <a href="#" class="flex items-center text-sm gap-3 px-4 py-2 rounded hover:bg-blue-700">
-          <i data-lucide="users" class="h-5 w-5"></i>Total Accounts
-        </a>
-
-        <!-- Dropdown Section -->
-        <div class="pt-4 px-4 font-semibold cursor-pointer flex items-center justify-between" onclick="toggleDropdown('user-status')">
-          <span>User Status</span>
-          <i id="user-status-icon" data-lucide="chevron-down" class="h-4 w-4"></i>
       </div>
-      <div id="user-status" class="dropdown-content">
-          <a href="#" class="flex items-center text-sm gap-3 px-4 py-2 rounded hover:bg-blue-700">
-              <i data-lucide="user-check" class="h-5 w-5"></i>Verified Users
-          </a>
-          <a href="#" class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700">
-              <i data-lucide="user-cog" class="h-5 w-5"></i>Under Verification
-          </a>
-          <a href="#" class="flex items-center text-sm  gap-3 px-4 py-2 rounded hover:bg-blue-700">
-              <i data-lucide="user-x" class="h-5 w-5"></i>Not Verified Users
-          </a>  
-          <a href="#" class="flex items-center text-sm  gap-3 px-4 py-2 rounded hover:bg-blue-700">
-              <i data-lucide="x-circle" class="h-5 w-5"></i>Rejected Verification
-          </a>
-      </div>
-
-        <div>
-          <hr class="border-t-2 border-white my-4">
+    </header>
+    <!-- Dashboard Layout -->
+    <div class="flex">
+      <!-- Scalable/Collapsible Sidebar -->
+      <nav id="sidebar" class="active">
+        <!-- Fixed Header within Sidebar -->
+        <div class="sidebar-header">
+          <button type="button" id="sidebarCollapse" class="btn">
+            <i class="bi bi-list" style="color: white"></i>
+          </button>
         </div>
-        <div>
-          <div class="flex items-center font-bold gap-5 px-4 py-2 text-black rounded-lg bg-white">
-            <span>Organization</span>
+
+        <!-- Scrollable Menu Container -->
+        <div class="sidebar-menu">
+          <!-- Main Navigation -->
+          <div class="nav-section">
+            <p class="section-title">Main</p>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="#" class="section-title">
+                  <i class="bi bi-grid"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-bar-chart"></i>
+                  <span>Analytics</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-download"></i>
+                  <span>App Download Status</span>
+                </a>
+              </li>
+            </ul>
+            <p class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="bi bi-download"></i>
+                <span>Total Accounts</span>
+              </a>
+            </p>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-people"></i>
+                  <span>User Status</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-patch-check"></i>
+                  <span>Verified Users</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-wrench-adjustable-circle"></i>
+                  <span>Under Verification</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-person-x"></i>
+                  <span>Not Verified Users</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-x-circle"></i>
+                  <span>Rejected Verification</span>
+                </a>
+              </li>
+            </ul>
           </div>
-          <div>
-            <a href="#" class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700">
-              <i data-lucide="building-2" class="h-5 w-5"></i>Total Companies
-            </a>
-            <a href="#" class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700">
-              <i data-lucide="users" class="h-5 w-5"></i>Total HR Recruiters
-            </a>
+
+          <!-- Organization Section -->
+          <div class="nav-section">
+            <p class="section-title">Organization</p>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-building"></i>
+                  <span>Total Companies</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-people-fill"></i>
+                  <span>Total HR Recruiters</span>
+                </a>
+              </li>
+            </ul>
           </div>
-          <hr class="border-t-2 border-white my-4">
-          <div>
-            <div class="flex items-center font-bold gap-5 px-4 py-2 text-black rounded-lg bg-white">
-              Hiremi 360 Program</div>
-            <div  class="pt-3">
-              <div class="flex items-center text-sm  px-3 py-2 text-white rounded-lg ">
-                Tranning + Internship</div>
-              
-              <div class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700">
-                Unimentor Program
-              </div  class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700">
-              <div class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700">
-                Corporate Launchpad
-              </div>
-              <div class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700">
-                Mock Tests
-              </div>
-              <div class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700">
-                Live Project Hub
-              </div>
-            </div>
-            <hr class="border-t-2 border-white my-4">
-            <h1 class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700" >
-              More</h1>
-            <div class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700"  >
-              Project report
-            </div>
-            <div class="flex items-center gap-3 text-sm  px-4 py-2 rounded hover:bg-blue-700" >
-              Admin Settings
-            </div>
+
+          <!-- Hiremi 360 Program Section -->
+          <div class="nav-section">
+            <p class="section-title">Hiremi 360 Program</p>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-mortarboard"></i>
+                  <span>Training + Internship</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-person-video3"></i>
+                  <span>Unimentor Program</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-rocket"></i>
+                  <span>Corporate Launchpad</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="bi bi-clipboard-check"></i>
+                  <span>Mock Tests</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>
-    </div>
-    </div>
 
-    <!-- Main Content -->
-    <main class="flex-1 overflow-auto flex">
-      <!-- Left Column (Existing Content) -->
-      <div class="flex-1">
-        <!-- Header -->
+      <!-- Overlay for Mobile -->
+      <div class="overlay"></div>
 
-        <div class="p-2  bg-white pt-7">  <!-- Reduced padding -->
-          <h1 class="text-xl font-semibold mb-4">Application Dashboard</h1>  <!-- Reduced font size and margin -->
-          <div class="grid grid-cols-5 mb-4">  <!-- Reduced grid gap and margin -->
-            <!-- Total Accounts Created -->
-            <div class="bg-white  p-3   h-[229px] cursor-pointer" onclick="window.location.href='index.html'">  <!-- Reduced padding and height -->
-              <div class="w-8 h-8  flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
-               <img src="assets/Totalacc.svg" >
-              </div>
-              <div class="text-xs font-semibold text-gray-500">
-
-                Total Accounts Created</div>  <!-- Reduced font size -->
-              <div class="text-xl font-bold">33</div>  <!-- Reduced font size -->
-              <div class="w-0.5 h-16 text-black bg-white"></div>
-
-            </div>
-            
-        
-            <!-- Verified Users -->
-            <div class="\bg-white  p-3   h-[229px] cursor-pointer">  <!-- Reduced padding and height -->
-              <div class="w-8 h-8  flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
-                <img src="assets/Verified.svg" >
-              </div>
-              <div class="text-xs font-semibold text-gray-500">Verified Users</div>  <!-- Reduced font size -->
-              <div class="text-xl font-bold">22</div>  <!-- Reduced font size -->
-            </div>
-        
-            <!-- Under Verification -->
-            <div class="bg-white  p-3   h-[229px] cursor-pointer">  <!-- Reduced padding and height -->
-              <div class="w-8 h-8  flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
-                <img src="assets/UnderVerifi.svg" >
-              </div>
-              <div class="text-xs font-semibold text-gray-500">Under Verification</div>  <!-- Reduced font size -->
-              <div class="text-xl font-bold">8</div>  <!-- Reduced font size -->
-            </div>
-        
-            <!-- Not Verified Users -->
-            <div class="bg-white  p-3   h-[229px] cursor-pointer">  <!-- Reduced padding and height -->
-              <div class="w-8 h-8  flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
-                <img src="assets/NotVerifi.svg" >
-              </div>
-              <div class="text-xs font-semibold text-gray-500">Not Verified Users</div>  <!-- Reduced font size -->
-              <div class="text-xl font-bold">1</div>  <!-- Reduced font size -->
-            </div>
-        
-            <!-- Rejected In Verification -->
-            <div class="bg-white  p-3   h-[229px] cursor-pointer">  <!-- Reduced padding and height -->
-              <div class="w-8 h-8W flex items-center justify-center mb-2">  <!-- Reduced icon container size -->
-                <img src="assets/Rejected.svg" >
-              </div>
-              <div class="text-xs font-semibold text-gray-500">Rejected In Verification</div>  <!-- Reduced font size -->
-              <div class="text-xl font-bold">2</div>  <!-- Reduced font size -->
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-4 p-4 bg-white">  <!-- Reduced padding and margin -->
-          <h2 class="text-xl font-semibold mb-2">Hiremi 360 Program</h2>  <!-- Reduced font size -->
-          <div class="grid grid-cols-3 gap-2">  <!-- Reduced grid gap -->
-            <!-- Program Cards -->
-            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">  <!-- Reduced padding -->
-              <div class="flex items-start gap-2">  <!-- Reduced gap -->
-                <img src="assets/Training.svg" >
-                <div>
-                  <div class="text-xl font-bold">1259</div>  <!-- Reduced font size -->
-                  <div class="text-sm text-gray-500">Training + Internship</div>  <!-- Reduced font size -->
-                </div>
-              </div>
-            </div>
-        
-            <!-- Repeat the same structure for other cards -->
-            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
-              <div class="flex items-start gap-2">
-                <img src="assets/Training.svg" >
-                <div>
-                  <div class="text-xl font-bold">1259</div>
-                  <div class="text-sm text-gray-500">Training + Internship</div>
-                </div>
-              </div>
-            </div>
-        
-            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
-              <div class="flex items-start gap-2">
-                <img src="assets/Training.svg" >
-                <div>
-                  <div class="text-xl font-bold">1259</div>
-                  <div class="text-sm text-gray-500">Training + Internship</div>
-                </div>
-              </div>
-            </div>
-        
-            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
-              <div class="flex items-start gap-2">
-                <img src="assets/Training.svg" >
-                <div>
-                  <div class="text-xl font-bold">1259</div>
-                  <div class="text-sm text-gray-500">Training + Internship</div>
-                </div>
-              </div>
-            </div>
-        
-            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
-              <div class="flex items-start gap-2">
-                <img src="assets/Training.svg" >
-                <div>
-                  <div class="text-xl font-bold">1259</div>
-                  <div class="text-sm text-gray-500">Training + Internship</div>
-                </div>
-              </div>
-            </div>
-        
-            <div class="bg-white p-4 rounded-lg shadow-lg program-tab">
-              <div class="flex items-start gap-2">
-                <img src="assets/Training.svg" >
-                <div>
-                  <div class="text-xl font-bold">1259</div>
-                  <div class="text-sm text-gray-500">Training + Internship</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- HR Dashboard -->
-        <div class="mb-3 px-4 bg-white">
-          <h2 class="text-xl font-semibold mb-2">HR's Dashboard</h2>
-          <div class="bg-white rounded-lg shadow-sm p-2">
-            <div class="grid grid-cols-3 gap-2">
-              <!-- Box Template -->
-              <div class="p-2 rounded-lg bg-gray-100 hover:bg-blue-50 transition-colors cursor-pointer">
-                <!-- Top Row -->
-                <div class="flex justify-between items-center">
-                  <div class="font-medium text-black text-sm">Verified</div>
-                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
-                </div>
-              
-                <!-- Bottom Row -->
-                <div class="flex justify-between items-center mt-1">
-                  <span class="text-xs font-medium text-gray-500">Total</span>
-                  <span class="text-black font-bold text-base">3242</span>
-                </div>
-              </div>
-        
-              <div class="p-2 rounded-lg bg-gray-100 hover:bg-blue-50 transition-colors cursor-pointer">
-                <div class="flex justify-between items-center">
-                  <div class="font-medium text-black text-sm">Not Verified</div>
-                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
-                </div>
-                <div class="flex justify-between items-center mt-1">
-                  <span class="text-xs font-medium text-gray-500">Total</span>
-                  <span class="text-black font-bold text-base">3242</span>
-                </div>
-              </div>
-        
-              <div class="p-2 rounded-lg bg-gray-100 hover:bg-blue-50 transition-colors cursor-pointer">
-                <div class="flex justify-between items-center">
-                  <div class="font-medium text-black text-sm">Registered</div>
-                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
-                </div>
-                <div class="flex justify-between items-center mt-1">
-                  <span class="text-xs font-medium text-gray-500">Total</span>
-                  <span class="text-black font-bold text-base">3242</span>
-                </div>
-              </div>
-        
-              <div class="p-2 rounded-lg bg-gray-100 hover:bg-red-300 transition-colors cursor-pointer">
-                <div class="flex justify-between items-center">
-                  <div class="font-medium text-black text-sm">Post Approval</div>
-                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
-                </div>
-                <div class="flex justify-between items-center mt-1">
-                  <span class="text-xs font-medium text-gray-500">Total</span>
-                  <span class="text-black font-bold text-base">3242</span>
-                </div>
-              </div>
-        
-              <div class="p-2 rounded-lg bg-gray-100 hover:bg-blue-300 transition-colors cursor-pointer">
-                <div class="flex justify-between items-center">
-                  <div class="font-medium text-black text-sm">Demo Section</div>
-                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
-                </div>
-                <div class="flex justify-between items-center mt-1">
-                  <span class="text-xs font-medium text-gray-500">Total</span>
-                  <span class="text-black font-bold text-base">3242</span>
-                </div>
-              </div>
-        
-              <div class="p-2 rounded-lg bg-gray-100 hover:bg-green-300 transition-colors cursor-pointer">
-                <div class="flex justify-between items-center">
-                  <div class="font-medium text-black text-sm">Demo Section</div>
-                  <i data-lucide="arrow-right" class="h-3 w-3 text-gray-500"></i>
-                </div>
-                <div class="flex justify-between items-center mt-1">
-                  <span class="text-xs font-medium text-gray-500">Total</span>
-                  <span class="text-black font-bold text-base">3242</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-md shadow-md p-6 w-full">
-        <!-- User Dashboard -->
-          <h1 class="text-xl font-bold mb-4">User Dashboard</h1>
-          <div class="flex gap-4">
-            <!-- Stats Box 1 -->
-            <div class="bg-gray-200 p-4 rounded-md shadow-md w-64">
-              <div class="grid grid-cols-2 gap-4">
-                  <!-- Column 1 -->
-                  <div class="space-y-3 pt-14">
-                      <p class="text-lg font-bold ">10<br>
-                          <span class="text-lm font-bold">Female User</span>
-                      </p>
+      <!-- Main Content -->
+      <div id="content" class="ml-0 transition-all duration-300">
+        <main class="flex">
+          <div class="flex-grow p-4">
+            <!-- Left part(centre part) -->
+            <div class="p-4 bg-white">
+              <h1 class="text-lg font-semibold mb-4">Application Dashboard</h1>
+              <div class="grid grid-cols-5 gap-4">
+                <!-- Total Accounts Created -->
+                <div
+                  class="bg-white p-4 shadow-md rounded-lg text-center cursor-pointer"
+                >
+                  <div class="w-10 h-10 mx-auto mb-2">
+                    <img src="assets/Totalacc.svg" alt="Total Accounts" />
                   </div>
-  
-                  <!-- Column 2 -->
-                  <div class="space-y-3 pt-7">
-                      <p class="text-md font-medium border border-blue-300 rounded-md pl-2 bg-green-200 p-2">
-                          999 <br>
-                          <span class="flex items-center gap-1 font-light text-xs text-green-800">
-                              Verified
-                              <i data-lucide="arrow-right" class="h-4 w-4 text-green-500"></i>
-                          </span>
-                      </p>
-                      <p class="text-md font-medium border border-red-300 rounded-md pl-2 bg-red-200 p-2">
-                          99 <br>
-                          <span class="flex items-center gap-1 font-light text-xs text-red-800">
-                              Not Verified
-                              <i data-lucide="arrow-right" class="h-4 w-4 text-red-500"></i>
-                          </span>
-                      </p>
+                  <p class="text-gray-500 text-sm font-medium">
+                    Total Accounts Created
+                  </p>
+                  <p class="text-2xl font-bold">33</p>
+                </div>
+
+                <!-- Verified Users -->
+                <div
+                  class="bg-white p-4 shadow-md rounded-lg text-center cursor-pointer"
+                >
+                  <div class="w-10 h-10 mx-auto mb-2">
+                    <img src="assets/Verified.svg" alt="Verified Users" />
                   </div>
-              </div>
-          </div>
-            <!-- Stats Box 2 -->
-            <div class="bg-gray-200 p-4 rounded-md shadow-md w-64">
-              <div class="grid grid-cols-2 gap-4">
-                <div class="space-y-3 pt-14">
-                  <p class="text-lg font-bold">20 <br><span class="text-lm font-bold">Male User</span></p>
-                </div>
-                <div class="space-y-3 pt-7">
-                  <p class="text-md font-medium border border-blue-300 rounded-md pl-2 bg-green-200 p-2">
-                    999 <br>
-                    <span class="flex items-center gap-1 font-light text-xs text-green-800">
-                      Verified
-                      <i data-lucide="arrow-right" class="h-4 w-4 text-green-500"></i>
-                    </span>
+                  <p class="text-gray-500 text-sm font-medium">
+                    Verified<br />
+                    User
                   </p>
-                  <p class="text-md font-medium border border-red-300 rounded-md pl-2 bg-red-200 p-2">
-                    99 <br>
-                    <span class="flex items-center gap-1 font-light text-xs text-red-800">
-                      Not Verified
-                      <i data-lucide="arrow-right" class="h-4 w-4 text-red-500"></i>
-                    </span>
+                  <p class="text-2xl font-bold">22</p>
+                </div>
+
+                <!-- Under Verification -->
+                <div
+                  class="bg-white p-4 shadow-md rounded-lg text-center cursor-pointer"
+                >
+                  <div class="w-10 h-10 mx-auto mb-2">
+                    <img
+                      src="assets/UnderVerifi.svg"
+                      alt="Under Verification"
+                    />
+                  </div>
+                  <p class="text-gray-500 text-sm font-medium">
+                    Under Verification
                   </p>
+                  <p class="text-2xl font-bold">8</p>
+                </div>
+
+                <!-- Not Verified Users -->
+                <div
+                  class="bg-white p-4 shadow-md rounded-lg text-center cursor-pointer"
+                >
+                  <div class="w-10 h-10 mx-auto mb-2">
+                    <img src="assets/NotVerifi.svg" alt="Not Verified" />
+                  </div>
+                  <p class="text-gray-500 text-sm font-medium">
+                    Not Verified Users
+                  </p>
+                  <p class="text-2xl font-bold">1</p>
+                </div>
+
+                <!-- Rejected In Verification -->
+                <div
+                  class="bg-white p-4 shadow-md rounded-lg text-center cursor-pointer"
+                >
+                  <div class="w-10 h-10 mx-auto mb-2">
+                    <img src="assets/Rejected.svg" alt="Rejected Users" />
+                  </div>
+                  <p class="text-gray-500 text-sm font-medium">
+                    Rejected In Verification
+                  </p>
+                  <p class="text-2xl font-bold">2</p>
                 </div>
               </div>
             </div>
-          
-            
-            <!-- Information Boxes -->
-            <div class="grid grid-cols-3 gap-2">
-              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
-                Interested Domain
-                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+
+            <div class="mb-4 p-4 bg-white">
+              <h2 class="text-xl font-semibold mb-2">Hiremi 360 Program</h2>
+              <div class="grid grid-cols-3 gap-4">
+                <!-- Training + Internship (Active by default) -->
+                <div class="program-card">
+                  <div class="flex items-center gap-2 active">
+                    <img src="assets/Training.svg" alt="Training" />
+                    <div>
+                      <div class="text-xl font-bold text-gray-700">1259</div>
+                      <div class="text-sm text-gray-600">
+                        Training + Internship
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Unimentor Program -->
+                <div class="program-card">
+                  <div class="flex items-center gap-2 active">
+                    <img src="assets/Unimentor.svg" alt="Unimentor" />
+                    <div>
+                      <div class="text-xl font-bold text-gray-700">1259</div>
+                      <div class="text-sm text-gray-600">Unimentor Program</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Corporate Launchpad -->
+                <div class="program-card">
+                  <div class="flex items-center gap-2 active">
+                    <img src="assets/Unimentor.svg" alt="Corporate Launchpad" />
+                    <div>
+                      <div class="text-xl font-bold text-gray-700">1259</div>
+                      <div class="text-sm text-gray-600">
+                        Corporate Launchpad
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="program-card">
+                  <div class="flex items-center gap-2 active">
+                    <img src="assets/Unimentor.svg" alt="Corporate Launchpad" />
+                    <div>
+                      <div class="text-xl font-bold text-gray-700">1259</div>
+                      <div class="text-sm text-gray-600">Mock Tests</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="program-card">
+                  <div class="flex items-center gap-2 active">
+                    <img src="assets/Unimentor.svg" alt="Corporate Launchpad" />
+                    <div>
+                      <div class="text-xl font-bold text-gray-700">1259</div>
+                      <div class="text-sm text-gray-600">Live Project Hub</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="program-card">
+                  <div class="flex items-center gap-2 active">
+                    <img src="assets/Unimentor.svg" alt="Corporate Launchpad" />
+                    <div>
+                      <div class="text-xl font-bold text-gray-700">1259</div>
+                      <div class="text-sm text-gray-600">Launching soon</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
-                Branch
-                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+            </div>
+
+            <!-- HR Dashboard -->
+            <div class="mb-3 px-4 bg-white">
+              <h2 class="text-xl font-semibold mb-2">HR's Dashboard</h2>
+              <div class="bg-white rounded-lg shadow-sm p-2">
+                <div class="grid grid-cols-3 gap-2">
+                  <!-- Box Template -->
+                  <div
+                    class="p-2 rounded-lg bg-gray-100 hover:bg-green-400 cursor-pointer group"
+                  >
+                    <!-- Top Row -->
+                    <div class="flex justify-between items-center">
+                      <div
+                        class="font-medium text-black text-sm group-hover:text-white"
+                      >
+                        Verified
+                      </div>
+                      <i
+                        data-lucide="arrow-right"
+                        class="h-3 w-3 text-gray-500 group-hover:text-white"
+                      ></i>
+                    </div>
+
+                    <!-- Bottom Row -->
+                    <div class="flex justify-between items-center mt-1">
+                      <span
+                        class="text-xs font-medium text-gray-500 group-hover:text-white"
+                        >Total</span
+                      >
+                      <span
+                        class="text-black font-bold text-base group-hover:text-white"
+                        >3242</span
+                      >
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-2 rounded-lg bg-gray-100 hover:bg-red-400 transition-colors cursor-pointer group"
+                  >
+                    <div class="flex justify-between items-center">
+                      <div
+                        class="font-medium text-black text-sm group-hover:text-white"
+                      >
+                        Not Verified
+                      </div>
+                      <i
+                        data-lucide="arrow-right"
+                        class="h-3 w-3 text-gray-500 group-hover:text-white"
+                      ></i>
+                    </div>
+                    <div class="flex justify-between items-center mt-1">
+                      <span
+                        class="text-xs font-medium text-gray-500 group-hover:text-white"
+                        >Total</span
+                      >
+                      <span
+                        class="text-black font-bold text-base group-hover:text-white"
+                        >3242</span
+                      >
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-2 rounded-lg bg-gray-100 hover:bg-blue-400 transition-colors cursor-pointer group"
+                  >
+                    <div class="flex justify-between items-center">
+                      <div
+                        class="font-medium text-black text-sm group-hover:text-white"
+                      >
+                        Registered
+                      </div>
+                      <i
+                        data-lucide="arrow-right"
+                        class="h-3 w-3 text-gray-500 group-hover:text-white"
+                      ></i>
+                    </div>
+                    <div class="flex justify-between items-center mt-1">
+                      <span
+                        class="text-xs font-medium text-gray-500 group-hover:text-white"
+                        >Total</span
+                      >
+                      <span
+                        class="text-black font-bold text-base group-hover:text-white"
+                        >3242</span
+                      >
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-2 rounded-lg bg-gray-100 hover:bg-red-400 transition-colors cursor-pointer group"
+                  >
+                    <div class="flex justify-between items-center">
+                      <div
+                        class="font-medium text-black text-sm group-hover:text-white"
+                      >
+                        Post Approval
+                      </div>
+                      <i
+                        data-lucide="arrow-right"
+                        class="h-3 w-3 text-gray-500 group-hover:text-white"
+                      ></i>
+                    </div>
+                    <div class="flex justify-between items-center mt-1">
+                      <span
+                        class="text-xs font-medium text-gray-500 group-hover:text-white"
+                        >Total</span
+                      >
+                      <span
+                        class="text-black font-bold text-base group-hover:text-white"
+                        >3242</span
+                      >
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-2 rounded-lg bg-gray-100 hover:bg-blue-400 transition-colors cursor-pointer group"
+                  >
+                    <div class="flex justify-between items-center">
+                      <div
+                        class="font-medium text-black text-sm group-hover:text-white"
+                      >
+                        Demo Section
+                      </div>
+                      <i
+                        data-lucide="arrow-right"
+                        class="h-3 w-3 text-gray-500 group-hover:text-white"
+                      ></i>
+                    </div>
+                    <div class="flex justify-between items-center mt-1">
+                      <span
+                        class="text-xs font-medium text-gray-500 group-hover:text-white"
+                        >Total</span
+                      >
+                      <span
+                        class="text-black font-bold text-base group-hover:text-white"
+                        >3242</span
+                      >
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-2 rounded-lg bg-gray-100 hover:bg-green-400 transition-colors cursor-pointer group"
+                  >
+                    <div class="flex justify-between items-center">
+                      <div
+                        class="font-medium text-black text-sm group-hover:text-white"
+                      >
+                        Demo Section
+                      </div>
+                      <i
+                        data-lucide="arrow-right"
+                        class="h-3 w-3 text-gray-500 group-hover:text-white"
+                      ></i>
+                    </div>
+                    <div class="flex justify-between items-center mt-1">
+                      <span
+                        class="text-xs font-medium text-gray-500 group-hover:text-white"
+                        >Total</span
+                      >
+                      <span
+                        class="text-black font-bold text-base group-hover:text-white"
+                        >3242</span
+                      >
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
-                Degree
-                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
-              </div>
-              <div class="bg-white border rounded-md shadow-md p-2  flex justify-between items-center h-[40px]">
-                College State
-                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
-              </div>
-              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
-                Birth Place State
-                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
-              </div>
-              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
-                Passing Year
-                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
-              </div>
-              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
-                Current City
-                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
-              </div>
-              <div class="bg-white border rounded-md shadow-md p-2 flex justify-between items-center h-[40px]">
-                Current State
-                <i data-lucide="arrow-right" class="h-4 w-4 text-gray-500"></i>
+            </div>
+
+            <div class="bg-white rounded-md shadow-md p-6 w-full">
+              <!-- User's Dashboard -->
+              <h1 class="text-xl font-bold mb-4">User’s Dashboard</h1>
+
+              <div class="flex gap-4">
+                <!-- Female Users Box -->
+                <div class="bg-gray-100 p-4 rounded-md shadow-md w-64">
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-3 pt-10">
+                      <p class="text-lg font-bold">
+                        10<br />
+                        <span class="text-sm font-medium">Female Users</span>
+                      </p>
+                    </div>
+                    <div class="space-y-3 pt-5">
+                      <p
+                        class="text-md font-medium border border-green-300 rounded-md bg-green-100 p-2 text-center"
+                      >
+                        999 <br />
+                        <span
+                          class="flex justify-center items-center gap-1 font-light text-xs text-green-800"
+                        >
+                          Verified
+                          <i
+                            data-lucide="arrow-right"
+                            class="h-4 w-4 text-green-500"
+                          ></i>
+                        </span>
+                      </p>
+                      <p
+                        class="text-md font-medium border border-red-300 rounded-md bg-red-100 p-2 text-center"
+                      >
+                        99 <br />
+                        <span
+                          class="flex justify-center items-center gap-1 font-light text-xs text-red-800"
+                        >
+                          Not Verified
+                          <i
+                            data-lucide="arrow-right"
+                            class="h-4 w-4 text-red-500"
+                          ></i>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Male Users Box -->
+                <div class="bg-gray-100 p-4 rounded-md shadow-md w-64">
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-3 pt-10">
+                      <p class="text-lg font-bold">
+                        20<br />
+                        <span class="text-sm font-medium">Male Users</span>
+                      </p>
+                    </div>
+                    <div class="space-y-3 pt-5">
+                      <p
+                        class="text-md font-medium border border-green-300 rounded-md bg-green-100 p-2 text-center"
+                      >
+                        999 <br />
+                        <span
+                          class="flex justify-center items-center gap-1 font-light text-xs text-green-800"
+                        >
+                          Verified
+                          <i
+                            data-lucide="arrow-right"
+                            class="h-4 w-4 text-green-500"
+                          ></i>
+                        </span>
+                      </p>
+                      <p
+                        class="text-md font-medium border border-red-300 rounded-md bg-red-100 p-2 text-center"
+                      >
+                        99 <br />
+                        <span
+                          class="flex justify-center items-center gap-1 font-light text-xs text-red-800"
+                        >
+                          Not Verified
+                          <i
+                            data-lucide="arrow-right"
+                            class="h-4 w-4 text-red-500"
+                          ></i>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Information Boxes (3 Columns) -->
+                <div class="grid grid-cols-3 gap-2 flex-1">
+                  <div
+                    class="bg-white border rounded-md shadow-md p-3 flex justify-between items-center"
+                  >
+                    Interested Domain
+                    <i
+                      data-lucide="arrow-right"
+                      class="h-4 w-4 text-gray-500"
+                    ></i>
+                  </div>
+                  <div
+                    class="bg-white border rounded-md shadow-md p-3 flex justify-between items-center"
+                  >
+                    Branch
+                    <i
+                      data-lucide="arrow-right"
+                      class="h-4 w-4 text-gray-500"
+                    ></i>
+                  </div>
+                  <div
+                    class="bg-white border rounded-md shadow-md p-3 flex justify-between items-center"
+                  >
+                    Degree
+                    <i
+                      data-lucide="arrow-right"
+                      class="h-4 w-4 text-gray-500"
+                    ></i>
+                  </div>
+                  <div
+                    class="bg-white border rounded-md shadow-md p-3 flex justify-between items-center"
+                  >
+                    College State
+                    <i
+                      data-lucide="arrow-right"
+                      class="h-4 w-4 text-gray-500"
+                    ></i>
+                  </div>
+                  <div
+                    class="bg-white border rounded-md shadow-md p-3 flex justify-between items-center"
+                  >
+                    Birth Place State
+                    <i
+                      data-lucide="arrow-right"
+                      class="h-4 w-4 text-gray-500"
+                    ></i>
+                  </div>
+                  <div
+                    class="bg-white border rounded-md shadow-md p-3 flex justify-between items-center"
+                  >
+                    Passing Year
+                    <i
+                      data-lucide="arrow-right"
+                      class="h-4 w-4 text-gray-500"
+                    ></i>
+                  </div>
+                  <div
+                    class="bg-white border rounded-md shadow-md p-3 flex justify-between items-center"
+                  >
+                    Current City
+                    <i
+                      data-lucide="arrow-right"
+                      class="h-4 w-4 text-gray-500"
+                    ></i>
+                  </div>
+                  <div
+                    class="bg-white border rounded-md shadow-md p-3 flex justify-between items-center"
+                  >
+                    Current State
+                    <i
+                      data-lucide="arrow-right"
+                      class="h-4 w-4 text-gray-500"
+                    ></i>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+
+          <!-- Right Column (New Content) -->
+          <div class="w-[320px] p-6 space-y-6 flex-">
+            <!-- Current Opportunities Section -->
+            <h2 class="text-lg font-bold mb-3">Current Opportunities</h2>
+            <div class="space-y-3">
+              <div
+                class="current-seeker-tabs flex justify-between items-center bg-purple-100 p-3 border border-purple-300 hover:bg-purple-400 hover:border-purple-500 hover:text-white transition duration-200"
+              >
+                <div class="flex items-center gap-2">
+                  <img src="assets/Internships.svg" />
+                  <span class="font-medium">Internships</span>
+                </div>
+                <span class="font-semibold text-gray-700">1000</span>
+              </div>
+              <div
+                class="current-seeker-tabs flex justify-between items-center bg-green-100 p-3 border border-green-300 hover:bg-green-400 hover:border-green-500 hover:text-white transition duration-200"
+              >
+                <div class="flex items-center gap-2">
+                  <img src="assets/Fresher.svg" />
+                  <span class="font-medium">Fresher Jobs</span>
+                </div>
+                <span class="font-semibold text-gray-700">2000</span>
+              </div>
+              <div
+                class="current-seeker-tabs flex justify-between items-center bg-red-100 p-3 border border-red-300 hover:bg-red-400 hover:border-red-500 hover:text-white transition duration-200"
+              >
+                <div class="flex items-center gap-2">
+                  <img src="assets/Experienced.svg" />
+                  <span class="font-medium">Experienced Jobs</span>
+                </div>
+                <span class="font-semibold text-gray-700">1000</span>
+              </div>
+            </div>
+
+            <!-- Current Seekers Section -->
+            <h2 class="text-lg font-bold mb-3">Current Seekers</h2>
+            <div class="space-y-3">
+              <div
+                class="current-seeker-tabs flex justify-between items-center bg-purple-100 p-3 border border-purple-300 hover:bg-purple-400 hover:border-purple-500 hover:text-white transition duration-200"
+              >
+                <div class="flex items-center gap-2">
+                  <img src="assets/Internships.svg" />
+                  <span class="font-medium">Internships</span>
+                </div>
+                <span class="font-semibold text-gray-700">1000</span>
+              </div>
+              <div
+                class="current-seeker-tabs flex justify-between items-center bg-green-100 p-3 border border-green-300 hover:bg-green-400 hover:border-green-500 hover:text-white transition duration-200"
+              >
+                <div class="flex items-center gap-2">
+                  <img src="assets/Fresher.svg" />
+                  <span class="font-medium">Fresher Jobs</span>
+                </div>
+                <span class="font-semibold text-gray-700">2000</span>
+              </div>
+              <div
+                class="current-seeker-tabs flex justify-between items-center bg-red-100 p-3 border border-red-300 hover:bg-red-400 hover:border-red-500 hover:text-white transition duration-200"
+              >
+                <div class="flex items-center gap-2">
+                  <img src="assets/Experienced.svg" />
+                  <span class="font-medium">Experienced Jobs</span>
+                </div>
+                <span class="font-semibold text-gray-700">1000</span>
+              </div>
+            </div>
+
+            <!-- Resolved Queries Section -->
+            <div
+              class="mt-6 border-t pt-7 border rounded-lg p-6 border-gray-200"
+            >
+              <div class="flex items-center gap-2">
+                <i data-lucide="help-circle" class="h-5 w-5 text-blue-600"></i>
+                <a href="#" class="text-blue-600 font-medium"
+                  ><u>Resolved Queries</u></a
+                >
+              </div>
+              <p class="text-xl font-semibold">
+                50<span class="text-gray-500">/100</span>
+              </p>
+            </div>
+          </div>
+        </main>
       </div>
+    </div>
 
-      <!-- Right Column (New Content) -->
-      <div class="w-80 p-6 space-y-6">
-        <!-- Current Opportunities Section -->
-        <h2 class="text-lg font-bold mb-3">Current Opportunities</h2>
-        <div class="space-y-3">
-          <div class="current-seeker-tabs flex justify-between items-center bg-purple-100 p-3  border border-purple-300 hover:bg-purple-400 hover:border-purple-500 hover:text-white transition duration-200">
-            <div class="flex items-center gap-2">
-              <img src="assets/Internships.svg">
-              <span class="font-medium">Internships</span>
-            </div>
-            <span class="font-semibold text-gray-700">1000</span>
-          </div>
-          <div class="current-seeker-tabs flex justify-between items-center bg-green-100 p-3  border border-green-300 hover:bg-green-400 hover:border-green-500 hover:text-white transition duration-200">
-            <div class="flex items-center gap-2">
-              <img src="assets/Fresher.svg">
-              <span class="font-medium">Fresher Jobs</span>
-            </div>
-            <span class="font-semibold text-gray-700">2000</span>
-          </div>
-          <div class="current-seeker-tabs flex justify-between items-center bg-red-100 p-3  border border-red-300 hover:bg-red-400 hover:border-red-500 hover:text-white transition duration-200">
-            <div class="flex items-center gap-2">
-              <img src="assets/Experienced.svg">
-              <span class="font-medium">Experienced Jobs</span>
-            </div>
-            <span class="font-semibold text-gray-700">1000</span>
-          </div>
-        </div>
-
-        <!-- Resolved Queries Section -->
-        <div class="mt-6 border-t pt-7 border rounded-lg p-6   border-gray-200">
-          <div class="flex items-center gap-2">
-            <i data-lucide="help-circle" class="h-5 w-5 text-blue-600"></i>
-            <a href="#" class="text-blue-600 font-medium"><u>Resolved Queries</u></a>
-          </div>
-          <p class="text-xl font-semibold">50<span class="text-gray-500">/100</span></p>
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <!-- Initialize Lucide Icons -->
-  <script>
-    lucide.createIcons();
-
-    function toggleDropdown(id) {
-      const dropdown = document.getElementById(id);
-      const icon = document.getElementById(`${id}-icon`);
-      dropdown.classList.toggle('show');
-
-      // Toggle the icon between chevron-down and chevron-up
-      if (dropdown.classList.contains('show')) {
-        icon.setAttribute('data-lucide', 'chevron-up');
-      } else {
-        icon.setAttribute('data-lucide', 'chevron-down');
-      }
-      lucide.createIcons(); // Reinitialize icons to update the displayed icon
-    }
-
-    function toggleMenu() {
-      const menu = document.getElementById('menu-content');
-      menu.classList.toggle('hidden');
-    }
-  </script>
-</body>
+    <!-- Initialize Lucide Icons -->
+    <script src="Dashboard.js"></script>
+  </body>
 </html>
