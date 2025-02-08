@@ -1,0 +1,187 @@
+ .dropdown-content {
+   display: none;
+ }
+
+ .dropdown-content.show {
+   display: block;
+ }
+
+ .current-seeker-tabs {
+   height: 71px;
+   width: 220px;
+   border-radius: 8px;
+ }
+
+ .program-card {
+   background-color: #f8f9fa;
+   /* Light gray background */
+   padding: 16px;
+   border-radius: 8px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.3s ease-in-out;
+ }
+
+ .program-card:hover,
+ .program-card.active {
+   background-color: #91a9d4;
+   color: white;
+ }
+
+ .program-card:hover .text-xl,
+ .program-card.active .text-xl {
+   color: blue;
+ }
+
+ .program-card:hover .text-sm,
+ .program-card.active .text-sm {
+   color: white;
+ }
+
+    :root {
+      --sidebar-width: 260px;
+      --sidebar-collapsed-width: 70px;
+      --sidebar-bg: #003dd1;
+      --sidebar-color: #fff;
+      --transition-speed: 0.3s;
+      --header-height: 85px;
+      /* matches your existing header height */
+    }
+  
+    /* Sidebar Container */
+    #sidebar {
+      width: var(--sidebar-width);
+      background: var(--sidebar-bg);
+      color: var(--sidebar-color);
+      transition: all var(--transition-speed) ease;
+      position: sticky;
+      top: var(--header-height);
+      height: calc(100vh - var(--header-height));
+      overflow: hidden;
+      /* Hide overall overflow; inner menu can scroll */
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    /* Collapsed sidebar width */
+    #sidebar.active {
+      width: var(--sidebar-collapsed-width);
+    }
+  
+    /* Sidebar Header (non-scrollable) */
+    .sidebar-header {
+      padding-top: 10px;
+      padding-left: 20px;
+      flex-shrink: 0;
+      background: var(--sidebar-bg);
+      color: white;
+      display: flex;
+      justify-content: flex-start;
+    }
+  
+    .sidebar-header .btn {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+    }
+  
+    /* Scrollable Menu Container inside Sidebar */
+    .sidebar-menu {
+      overflow-y: auto;
+      flex-grow: 1;
+      padding: 10px 0;
+    }
+  
+    /* Navigation Section Styles */
+    .nav-section {
+      padding: 0 15px;
+      margin-bottom: 10px;
+    }
+  
+    .section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      padding: 5px 15px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      background-color: white;
+      color: #003dd1;
+      font-weight: 700;
+      line-height: 18px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  
+    .section-title .Total-icon {
+      width: 15px;
+      height: 15px;
+    }
+  
+    /* Hide section titles when sidebar is collapsed */
+    #sidebar.active .section-title {
+      display: none;
+    }
+  
+    /* Navigation Link Styles */
+    .nav-link {
+      padding: 5px ;
+      font-size: 0.85rem;
+      color: var(--sidebar-color);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 5px;
+      margin: 2px 0;
+      text-decoration: none;
+      /* Remove underline */
+    }
+  
+   
+  
+    .nav-link i {
+      font-size: 1.2rem;
+      min-width: 24px;
+      text-align: center;
+      
+    }
+  
+    /* Hide link text when sidebar is collapsed */
+    #sidebar.active .nav-link span {
+      display: none;
+    }
+  
+    /* Overlay for mobile */
+   /* .overlay {
+      display: none;
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 998;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+      top: 0;
+      left: 0;
+    }
+  
+    .overlay.active {
+      display: block;
+      opacity: 1;
+    } */
+  
+    /* Custom scrollbar for sidebar-menu */
+    .sidebar-menu::-webkit-scrollbar {
+      width: 8px;
+    }
+  
+    .sidebar-menu::-webkit-scrollbar-thumb {
+      background-color: #003dd1;
+      border-radius: 4px;
+    }
+  
+    .sidebar-menu::-webkit-scrollbar-thumb:hover {
+      background-color: #002bbd;
+    }
